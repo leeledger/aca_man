@@ -1,0 +1,114 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../dev.db"
+}
+
+model Academy {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  users     User[]   // 학원에 소속된 사용자들
+  tasks     Task[]   // 학원의 업무들
+
+  @@map("academies")
+}
+
+model User {
+  id                String    @id @default(cuid())
+  name              String?
+  email             String    @unique
+  phoneNumber       String?   // 전화번호
+  businessLicense   String?   // 사업자 등록증 파일 경로
+  role              String    @default("TEACHER")
+  academyId         String?
+  academy           Academy?  @relation(fields: [academyId], references: [id])
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  isApproved        Boolean   @default(false)
+  password          String?   // 해시된 비밀번호 저장
+  kakaoAccessToken  String?   // 카카오톡 액세스 토큰
+  kakaoRefreshToken String?   // 카카오톡 리프레시 토큰
+  kakaoId           String?   // 카카오톡 사용자 ID
+  isKakaoLinked     Boolean   @default(false) // 카카오톡 연동 여부
+
+  // Relations
+  assignedTasks     Task[]    @relation("AssignedTasks")
+  createdTasks      Task[]    @relation("CreatedTasks")
+  subscriptions     Subscription[]
+
+  @@map("users")
+}
+
+model Task {
+  id           String     @id @default(cuid())
+  title        String
+  description  String?
+  images       String?    // JSON string to store multiple image URLs
+  dueDate      DateTime?
+  status       String     @default("REGISTERED")
+  academyId    String
+  academy      Academy    @relation(fields: [academyId], references: [id])
+  assignedToId String
+  assignedTo   User       @relation("AssignedTasks", fields: [assignedToId], references: [id])
+  createdById  String
+  createdBy    User       @relation("CreatedTasks", fields: [createdById], references: [id])
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  
+  // Relations
+  statusHistory TaskStatusHistory[] // 업무 상태 변경 이력
+
+  @@map("tasks")
+}
+
+model Subscription {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  startDate       DateTime  @default(now())
+  endDate         DateTime
+  amount          Float
+  status          String    @default("ACTIVE") // ACTIVE, EXPIRED, CANCELLED
+  paymentMethod   String?
+  paymentId       String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@map("subscriptions")
+}
+
+model PaymentHistory {
+  id              String    @id @default(cuid())
+  userId          String
+  amount          Float
+  paymentMethod   String
+  paymentId       String
+  status          String    @default("COMPLETED") // COMPLETED, FAILED, REFUNDED
+  description     String?
+  createdAt       DateTime  @default(now())
+
+  @@map("payment_history")
+}
+
+model TaskStatusHistory {
+  id              String    @id @default(cuid())
+  taskId          String
+  task            Task      @relation(fields: [taskId], references: [id])
+  previousStatus  String
+  newStatus       String
+  changedById     String
+  changedByName   String?   // 변경한 사용자 이름
+  changedByRole   String    // 변경한 사용자 역할 (ADMIN, TEACHER)
+  createdAt       DateTime  @default(now())
+
+  @@map("task_status_history")
+}

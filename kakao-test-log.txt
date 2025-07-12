@@ -1,0 +1,43 @@
+환경 변수 확인:
+KAKAO_API_KEY: 설정됨
+KAKAO_ADMIN_KEY: 설정됨
+TASK_STATUS_TEMPLATE_ID: 122346
+카카오 연동된 사용자:
+- 이종림 (force11@naver.com), 역할: ADMIN
+  카카오 ID: 4310296232
+  액세스 토큰: 있음
+  리프레시 토큰: 있음
+- 이예찬 같은 이종림 (robocoding@kakao.com), 역할: TEACHER
+  카카오 ID: 4345149403
+  액세스 토큰: 있음
+  리프레시 토큰: 있음
+
+테스트 사용자: 이예찬 같은 이종림 (robocoding@kakao.com)
+테스트 업무: 2학년 영어 모의고사 출제 (cmcyqa3hl000chpc3ckakzfa2)
+
+카카오톡 메시지 전송 시작...
+카카오 메시지 전송 시도:
+{
+  "userId": "cmczrjk4t000311a4f2yq2yj1",
+  "userName": "이예찬 같은 이종림",
+  "templateId": "122346",
+  "templateArgs": {
+    "task_title": "2학년 영어 모의고사 출제",
+    "task_id": "cmcyqa3hl000chpc3ckakzfa2",
+    "previous_status": "진행중",
+    "current_status": "완료",
+    "due_date": "2025. 7. 14.",
+    "updated_at": "2025. 7. 12. 오후 3:34:09"
+  }
+}
+카카오 액세스 토큰: Kxenwcj4orovTOsvWXUp0f28RyNWL-WZAAAAAQoNIBsAAAGX_SIfEYE8pQXSEbh1
+카카오톡 메시지 전송 성공: 122346
+{
+  "task_title": "2학년 영어 모의고사 출제",
+  "task_id": "cmcyqa3hl000chpc3ckakzfa2",
+  "previous_status": "진행중",
+  "current_status": "완료",
+  "due_date": "2025. 7. 14.",
+  "updated_at": "2025. 7. 12. 오후 3:34:09"
+}
+카카오톡 메시지 전송 성공!

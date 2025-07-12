@@ -1,0 +1,41 @@
+업무 목록:
+ID: cmcyqa3hl000chpc3ckakzfa2
+제목: 2학년 영어 모의고사 출제
+상태: IN_PROGRESS
+담당자: 강사2 (teacher2@example.com)
+생성자: 원장님 (admin@example.com)
+카카오 연동 여부(담당자): 연동안됨
+카카오 연동 여부(생성자): 연동안됨
+-----------------------------------
+ID: cmcyqa3hl000dhpc31i1lpz4k
+제목: 1학년 수학 교재 검토
+상태: REGISTERED
+담당자: 강사1 (teacher1@example.com)
+생성자: 원장님 (admin@example.com)
+카카오 연동 여부(담당자): 연동안됨
+카카오 연동 여부(생성자): 연동안됨
+-----------------------------------
+ID: cmcyqa3hm000ehpc3ook8u1jw
+제목: 3학년 과학 실험 준비
+상태: CONFIRMED
+담당자: 강사3 (teacher3@example.com)
+생성자: 원장님 (admin@example.com)
+카카오 연동 여부(담당자): 연동안됨
+카카오 연동 여부(생성자): 연동안됨
+-----------------------------------
+ID: cmczo2zaj000112dhvjzpljza
+제목: 테스트업무
+상태: REGISTERED
+담당자: 테스트1 (asdasd@dasda.com)
+생성자: 이종림 (force11@naver.com)
+카카오 연동 여부(담당자): 연동안됨
+카카오 연동 여부(생성자): 연동됨
+-----------------------------------
+ID: cmczo38nc000312dhe2o97wu7
+제목: 테스트업무
+상태: REGISTERED
+담당자: 테스트1 (asdasd@dasda.com)
+생성자: 이종림 (force11@naver.com)
+카카오 연동 여부(담당자): 연동안됨
+카카오 연동 여부(생성자): 연동됨
+-----------------------------------
