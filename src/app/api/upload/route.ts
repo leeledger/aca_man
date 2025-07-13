@@ -7,6 +7,9 @@ import { v4 as uuidv4 } from 'uuid'
 import { logApiRequest, logApiError } from '@/lib/logger'
 import sharp from 'sharp'
 
+// 동적 라우트 설정 추가
+export const dynamic = 'force-dynamic'
+
 // 이미지 저장 경로 설정
 const uploadDir = join(process.cwd(), 'public', 'uploads')
 
@@ -52,7 +55,7 @@ export async function POST(request: NextRequest) {
         
         // 이미지가 1200px보다 크면 리사이징
         if (metadata.width && metadata.width > 1200) {
-          processedBuffer = await image
+          processedBuffer = await (image as sharp.Sharp)
             .resize({ width: 1200, withoutEnlargement: true })
             .jpeg({ quality: 80, progressive: true })
             .toBuffer();
