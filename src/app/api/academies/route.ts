@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import { logApiRequest, logApiError } from '@/lib/logger'
 
+// 동적 라우트 설정 추가
+export const dynamic = 'force-dynamic'
+
 /**
  * 학원 목록 조회 API
  * 모든 사용자가 접근 가능 (로그인 필요 없음)

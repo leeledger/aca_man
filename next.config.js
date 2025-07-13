@@ -31,6 +31,12 @@ const nextConfig = {
     
     return config;
   },
+  // 정규식 스택 오버플로우 문제 해결을 위한 설정 추가
+  experimental: {
+    turbotrace: {
+      memoryLimit: 4096, // 메모리 제한 증가
+    },
+  },
 }
 
 module.exports = nextConfig

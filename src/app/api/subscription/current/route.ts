@@ -3,6 +3,9 @@ import prisma from '@/lib/prisma'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/auth-options'
 
+// 동적 라우트 설정 추가
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
     // 세션 확인
