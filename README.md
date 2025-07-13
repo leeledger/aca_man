@@ -48,6 +48,49 @@ cp .env.example .env
 npx prisma migrate dev
 ```
 
+## Vercel 배포 방법
+
+### 1. 사전 준비
+
+1. [Vercel](https://vercel.com) 계정 생성 및 로그인
+2. GitHub 저장소에 코드 푸시
+
+### 2. 배포 설정
+
+1. Vercel 대시보드에서 "New Project" 클릭
+2. GitHub 저장소 선택 후 "Import" 클릭
+3. 프로젝트 설정:
+   - Framework Preset: Next.js
+   - Build Command: `npx prisma generate && next build`
+   - Output Directory: `.next`
+
+### 3. 환경 변수 설정
+
+다음 환경 변수를 Vercel 프로젝트 설정에 추가합니다:
+
+```
+DATABASE_URL=postgresql://username:password@your-postgres-host.com:5432/academy_task_manager?schema=public
+NEXTAUTH_URL=https://your-vercel-app-url.vercel.app
+NEXTAUTH_SECRET=your-nextauth-secret-key
+KAKAO_CLIENT_ID=your-kakao-client-id
+KAKAO_CLIENT_SECRET=your-kakao-client-secret
+KAKAO_ADMIN_KEY=your-kakao-admin-key
+KAKAO_TASK_STATUS_TEMPLATE_ID=your-task-status-template-id
+KAKAO_TASK_REMINDER_TEMPLATE_ID=your-task-reminder-template-id
+NODE_ENV=production
+```
+
+### 4. 데이터베이스 설정
+
+Vercel은 서버리스 환경이므로 외부 PostgreSQL 데이터베이스 서비스를 사용해야 합니다:
+
+- [Supabase](https://supabase.com)
+- [Railway](https://railway.app)
+- [Neon](https://neon.tech)
+- [Heroku Postgres](https://www.heroku.com/postgres)
+
+데이터베이스 연결 문자열을 Vercel 환경 변수의 `DATABASE_URL`에 설정합니다.
+
 3. 시드 데이터 생성 (개발 환경에서만 사용)
 ```bash
 npx prisma db seed
