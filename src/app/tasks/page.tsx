@@ -1,5 +1,5 @@
 import { getServerSession } from 'next-auth'
-import { authOptions } from '../api/auth/[...nextauth]/route'
+import { authOptions } from '../api/auth/auth-options'
 import TaskList from '@/components/tasks/TaskList'
 import CreateTaskButton from '@/components/tasks/CreateTaskButton'
 

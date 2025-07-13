@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '../auth/[...nextauth]/route'
+import { authOptions } from '../auth/auth-options'
 import prisma from '@/lib/prisma'
 import { logApiRequest, logApiError } from '@/lib/logger'
 import { hash } from 'bcrypt'
 
-export async function GET(request) {
+export async function GET(request: NextRequest) {
   logApiRequest(request, 'GET teachers')
   const session = await getServerSession(authOptions)
 

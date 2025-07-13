@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '../auth/[...nextauth]/route'
+import { authOptions } from '../auth/auth-options'
 import prisma from '@/lib/prisma'
 import { logApiRequest, logApiError } from '@/lib/logger'
 
-export async function GET(request) {
+export async function GET(request: NextRequest) {
   logApiRequest(request, 'GET academy')
   const session = await getServerSession(authOptions)
 
@@ -15,7 +15,7 @@ export async function GET(request) {
   try {
     const academy = await prisma.academy.findUnique({
       where: {
-        id: session.user.academyId,
+        id: session.user.academyId || undefined,
       },
       select: {
         id: true,
@@ -37,7 +37,7 @@ export async function GET(request) {
   }
 }
 
-export async function PATCH(request: Request) {
+export async function PATCH(request: NextRequest) {
   logApiRequest(request, 'PATCH academy')
   const session = await getServerSession(authOptions)
 
@@ -51,7 +51,7 @@ export async function PATCH(request: Request) {
 
     const updatedAcademy = await prisma.academy.update({
       where: {
-        id: session.user.academyId,
+        id: session.user.academyId || undefined,
       },
       data: {
         name,

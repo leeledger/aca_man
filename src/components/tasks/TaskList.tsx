@@ -93,7 +93,7 @@ export default function TaskList() {
         
         if (teacherEmail && teacherEmail !== 'all') {
           // 특정 강사의 업무만 필터링
-          const filteredTasks = data.filter(task => task.assignedTo.email === teacherEmail)
+          const filteredTasks = data.filter((task: any) => task.assignedTo.email === teacherEmail)
           setTasks(filteredTasks)
         }
       }

@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     }
     
     // 사업자 등록증 파일 저장
-    let businessLicenseUrl
+    let businessLicenseUrl: string
     try {
       businessLicenseUrl = await saveBusinessLicense(businessLicenseFile)
     } catch (error) {

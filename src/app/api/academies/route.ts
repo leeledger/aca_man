@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import { logApiRequest, logApiError } from '@/lib/logger'
 
@@ -6,7 +6,7 @@ import { logApiRequest, logApiError } from '@/lib/logger'
  * 학원 목록 조회 API
  * 모든 사용자가 접근 가능 (로그인 필요 없음)
  */
-export async function GET(request) {
+export async function GET(request: NextRequest) {
   logApiRequest(request, 'GET academies')
   
   try {

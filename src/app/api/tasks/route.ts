@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '../auth/[...nextauth]/route'
+import { authOptions } from '../auth/auth-options'
 import prisma from '@/lib/prisma'
 import { logApiRequest, logApiError } from '@/lib/logger'
 import { sendTaskStatusChangeNotification } from '@/lib/kakao'
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
         dueDate: new Date(dueDate),
         assignedToId,
         createdById: session.user.id,
-        academyId: session.user.academyId,
+        academyId: session.user.academyId || '',
       },
       include: {
         assignedTo: true,
