@@ -5,7 +5,8 @@ import KakaoProvider from 'next-auth/providers/kakao'
 import prisma from '@/lib/prisma'
 import { compare } from 'bcrypt'
 
-export const authOptions: NextAuthOptions = {
+// Define authOptions but don't export it directly
+const authOptions: NextAuthOptions = {
   providers: [
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID || '',

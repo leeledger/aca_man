@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    KAKAO_CLIENT_ID: process.env.KAKAO_CLIENT_ID,
+    KAKAO_CLIENT_ID: process.env.KAKAO_CLIENT_ID || 'placeholder-for-build',
   },
   images: {
     domains: ['localhost'],
